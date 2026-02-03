@@ -522,7 +522,14 @@ nav {
 	.navigation--social a {
 		padding: 9px 8px 9px 8px; }
 		.navigation--social a .label {
-			display: none; }
+			display: inline-block;
+			margin-left: 8px;
+			font-size: 0.8em;
+			padding: 4px 8px;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 3px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px; }
 		.navigation--social a .icon {
 			display: block;
 			font-size: 1.7em; }
