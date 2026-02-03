@@ -2,11 +2,11 @@
 # 여기에 자신의 프로젝트들을 추가하세요
 # 형식: name, gh_user, repo, img, desc(선택사항)
 
-- name: [DroneSoccer]
+- name: [Tello_contents]
   gh_user: sonchansoo
-  repo: DroneSocial
-  img: /images/DroneSocial.png
-  desc: DroneSocial is a social media platform for drones. It allows users to share their drone photos and videos with others.
+  repo: https://github.com/sonchansoo/Tello_contents
+  img: /images/Tello_contents.png
+  desc: Tello_contents is a collection of Tello drone contents. It contains the code for the Tello drone and the code for the Tello drone controller.
 
 - name: [프로젝트 이름 2]
   gh_user: sonchansoo
