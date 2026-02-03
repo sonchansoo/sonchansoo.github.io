@@ -5,7 +5,7 @@
 - name: [Tello_contents]
   gh_user: sonchansoo
   repo: https://github.com/sonchansoo/Tello_contents
-  img: /images/Tello_contents.png
+  img: https://github.com/sonchansoo/Tello_contents
   desc: Tello_contents is a collection of Tello drone contents. It contains the code for the Tello drone and the code for the Tello drone controller.
 
 - name: [프로젝트 이름 2]
