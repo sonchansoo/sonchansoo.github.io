@@ -2,11 +2,11 @@
 # 여기에 자신의 프로젝트들을 추가하세요
 # 형식: name, gh_user, repo, img, desc(선택사항)
 
-- name: [프로젝트 이름 1]
+- name: [DroneSoccer]
   gh_user: sonchansoo
-  repo: [리포지토리명]
-  img: [이미지 URL]
-  desc: [프로젝트 설명 - 선택사항]
+  repo: DroneSocial
+  img: /images/DroneSocial.png
+  desc: DroneSocial is a social media platform for drones. It allows users to share their drone photos and videos with others.
 
 - name: [프로젝트 이름 2]
   gh_user: sonchansoo
