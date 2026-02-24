@@ -1,16 +1,26 @@
-# projects section data
-# 여기에 자신의 프로젝트들을 추가하세요
-# 형식: name, gh_user, repo, img, desc(선택사항)
+# ============================================
+# 프로젝트 목록 - 여기서 글(이름, 설명) 수정
+# ============================================
+# name: 프로젝트 제목
+# repo: GitHub 리포지토리 이름만 (예: Tello_contents)
+# img: 사진 경로 (아래 "사진 첨부 위치" 참고)
+# video: (선택) 유튜브 embed URL 또는 mp4 경로
+# desc: 프로젝트 설명 (여러 줄 가능, 마크다운 지원)
+# ============================================
 
-- name: [Tello_contents]
+- name: Tello_contents
   gh_user: sonchansoo
-  repo: https://github.com/sonchansoo/Tello_contents
-  img: https://github.com/sonchansoo/Tello_contents
-  desc: Tello_contents is a collection of Tello drone contents. It contains the code for the Tello drone and the code for the Tello drone controller.
+  repo: Tello_contents
+  img: /images/projects/tello_contents.jpg
+  desc: |
+    Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
 
-- name: [프로젝트 이름 2]
+- name: 프로젝트 이름 2
   gh_user: sonchansoo
-  repo: [리포지토리명]
-  img: [이미지 URL]
-
-# 더 많은 프로젝트를 추가하려면 위 형식을 복사해서 사용하세요
+  repo: my-repo-name
+  img: /images/projects/sample.jpg
+  # 예시) 유튜브 영상 추가 (embed URL 사용)
+  # video: https://www.youtube.com/embed/비디오ID
+  desc: |
+    여기에 프로젝트 설명을 입력하세요.
+    여러 줄도 가능합니다.
