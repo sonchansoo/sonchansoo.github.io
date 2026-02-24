@@ -12,7 +12,7 @@ robots: noindex
       {% else %}
         {% assign img_src = project.img | prepend: site.baseurl %}
       {% endif %}
-      <article class="project-card">
+      <article class="project-card" data-project-index="{{ forloop.index }}">
         {% if project.video %}
           {% assign video_src = project.video %}
           {% if video_src contains 'http' %}
@@ -54,4 +54,58 @@ robots: noindex
       </article>
     {% endfor %}
   </div>
+</section>
+
+<section class="project-detail-section" aria-hidden="true">
+  {% for project in site.data.projects %}
+    {% assign img_src = project.img %}
+    {% if project.img contains 'http' %}
+      {% assign img_src = project.img %}
+    {% else %}
+      {% assign img_src = project.img | prepend: site.baseurl %}
+    {% endif %}
+    <article class="project-detail-card" id="project-detail-{{ forloop.index }}">
+      <button class="project-detail__back" type="button">← Back to projects</button>
+      <header class="project-detail__header">
+        <h2 class="project-detail__title">{{ project.name }}</h2>
+      </header>
+      <div class="project-detail__content">
+        <div class="project-detail__media">
+          {% if project.video %}
+            {% assign video_src = project.video %}
+            {% if video_src contains 'http' %}
+              {% assign full_video_src = video_src %}
+            {% else %}
+              {% assign full_video_src = video_src | prepend: site.baseurl %}
+            {% endif %}
+            <div class="project-detail__video-wrap">
+              {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
+                <div class="project-detail__video project-detail__video--iframe">
+                  <iframe src="{{ full_video_src }}"
+                          loading="lazy"
+                          title="{{ project.name }} 동영상"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+                </div>
+              {% else %}
+                <video class="project-detail__video" controls src="{{ full_video_src }}"></video>
+              {% endif %}
+            </div>
+          {% elsif project.img %}
+            <div class="project-detail__image-wrap">
+              <img class="project-detail__image" src="{{ img_src }}" alt="{{ project.name }}">
+            </div>
+          {% endif %}
+        </div>
+        <div class="project-detail__text">
+          {% if project.desc %}
+            {{ project.desc | markdownify }}
+          {% else %}
+            <p>프로젝트 설명을 _data/projects.yml 에서 추가하세요.</p>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
 </section>

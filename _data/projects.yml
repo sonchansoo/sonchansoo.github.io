@@ -8,14 +8,14 @@
 # desc: 프로젝트 설명 (여러 줄 가능, 마크다운 지원)
 # ============================================
 
-- name: Tello_contents
+- name: Multi-Agent Reinforcement Learning Framework for Attack and Defense Intelligence in Drone Soccer
   gh_user: sonchansoo
-  repo: Tello_contents
+  repo: 
   img: /images/projects/tello_contents.jpg
   desc: |
     Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
 
-- name: Tello_contents
+- name: Proximal Policy Optimization for Robotic Arm Docking Control in Space Environments
   gh_user: sonchansoo
   repo: Tello_contents
   img: /images/projects/tello_contents.jpg

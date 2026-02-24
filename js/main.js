@@ -52,4 +52,27 @@ $(document).ready(function () {
   $('.navigation-wrapper .projects-button').click(function () {
     toggleMobileMenu();
   })
+
+  // Project card -> detail view toggle
+  $('.project-card').on('click', function () {
+    var idx = $(this).data('project-index');
+    if (!idx) return;
+
+    // 숨기기: 리스트, 보이기: 상세
+    $('.projects-section').hide();
+    $('.project-detail-section').addClass('is-active');
+    $('.project-detail-card').removeClass('is-active');
+    $('#project-detail-' + idx).addClass('is-active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 상세 화면에서 뒤로가기
+  $('.project-detail__back').on('click', function () {
+    $('.project-detail-section').removeClass('is-active');
+    $('.project-detail-card').removeClass('is-active');
+    $('.projects-section').show();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })
