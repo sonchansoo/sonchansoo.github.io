@@ -15,7 +15,14 @@
   desc: |
     Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
 
-- name: 프로젝트 이름 2
+- name: Tello_contents
+  gh_user: sonchansoo
+  repo: Tello_contents
+  img: /images/projects/tello_contents.jpg
+  desc: |
+    Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
+  
+- name: 프로젝트 이름
   gh_user: sonchansoo
   repo: my-repo-name
   img: /images/projects/sample.jpg

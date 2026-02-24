@@ -13,50 +13,43 @@ robots: noindex
         {% assign img_src = project.img | prepend: site.baseurl %}
       {% endif %}
       <article class="project-card">
-        <a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank" class="project-card__link" aria-label="{{ project.name }} - GitHub">
-          {% if project.video %}
-            {% assign video_src = project.video %}
-            {% if video_src contains 'http' %}
-              {% assign full_video_src = video_src %}
-            {% else %}
-              {% assign full_video_src = video_src | prepend: site.baseurl %}
-            {% endif %}
-            <div class="project-card__video-wrap">
-              {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
-                <div class="project-card__video project-card__video--iframe">
-                  <iframe src="{{ full_video_src }}"
-                          loading="lazy"
-                          title="{{ project.name }} 동영상"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowfullscreen></iframe>
-                </div>
-              {% else %}
-                <video class="project-card__video" controls src="{{ full_video_src }}"></video>
-              {% endif %}
-            </div>
+        {% if project.video %}
+          {% assign video_src = project.video %}
+          {% if video_src contains 'http' %}
+            {% assign full_video_src = video_src %}
           {% else %}
-            <div class="project-card__image-wrap">
-              <img class="project-card__image" src="{{ img_src }}" alt="{{ project.name }}">
-            </div>
+            {% assign full_video_src = video_src | prepend: site.baseurl %}
           {% endif %}
-          <div class="project-card__body">
-            <h3 class="project-card__title">
-              <i class="fab fa-github"></i> {{ project.name }}
-            </h3>
-            <div class="project-card__desc">
-              {% if project.desc %}
-                {{ project.desc | markdownify }}
-              {% else %}
-                <p>프로젝트 설명을 _data/projects.yml 에서 추가하세요.</p>
-              {% endif %}
-            </div>
-            <span class="project-card__cta">GitHub에서 보기 →</span>
+          <div class="project-card__video-wrap">
+            {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
+              <div class="project-card__video project-card__video--iframe">
+                <iframe src="{{ full_video_src }}"
+                        loading="lazy"
+                        title="{{ project.name }} 동영상"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+              </div>
+            {% else %}
+              <video class="project-card__video" controls src="{{ full_video_src }}"></video>
+            {% endif %}
           </div>
-        </a>
-        <div class="project-card__meta ghbtn" user="{{ project.gh_user }}" repo="{{ project.repo }}">
-          <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers"><i class="fa fa-star"></i><span class="star"> ...</span></a>
-          <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network"><i class="fa fa-code-fork"></i><span class="fork"> ...</span></a>
+        {% else %}
+          <div class="project-card__image-wrap">
+            <img class="project-card__image" src="{{ img_src }}" alt="{{ project.name }}">
+          </div>
+        {% endif %}
+        <div class="project-card__body">
+          <h3 class="project-card__title">
+            {{ project.name }}
+          </h3>
+          <div class="project-card__desc">
+            {% if project.desc %}
+              {{ project.desc | markdownify }}
+            {% else %}
+              <p>프로젝트 설명을 _data/projects.yml 에서 추가하세요.</p>
+            {% endif %}
+          </div>
         </div>
       </article>
     {% endfor %}
