@@ -127,8 +127,87 @@
   gap: 1.5rem;
 }
 
-.project-detail__media {
+.project-detail__media-col {
   flex: 1 1 auto;
+}
+
+.project-detail__media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.project-detail__media-item {
+  width: 100%;
+}
+
+.project-detail__media-item--image .project-detail__image,
+.project-detail__media-item--image img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  background: #f5f5f5;
+  object-fit: cover;
+}
+
+.project-detail__media-item--image .project-detail__image-wrap {
+  width: 100%;
+  max-height: 360px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+
+.project-detail__media-item--video .project-detail__video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.project-detail__text-col {
+  flex: 1 1 auto;
+}
+
+.project-detail__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-detail__section {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.project-detail__section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.project-detail__section-content {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #444;
+
+  p {
+    margin: 0 0 0.6em;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  ul, ol {
+    margin: 0.5em 0;
+    padding-left: 1.25em;
+  }
 }
 
 .project-detail__image-wrap {
@@ -170,18 +249,9 @@
 }
 
 .project-detail__text {
-  flex: 1 1 auto;
   font-size: 0.98rem;
   line-height: 1.8;
   color: #444;
-}
-
-.project-detail__text p {
-  margin: 0 0 0.8em;
-}
-
-.project-detail__text p:last-child {
-  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -198,12 +268,12 @@
     align-items: flex-start;
   }
 
-  .project-detail__media {
-    flex: 0 0 50%;
+  .project-detail__media-col {
+    flex: 0 0 48%;
   }
 
-  .project-detail__text {
-    flex: 0 0 50%;
+  .project-detail__text-col {
+    flex: 0 0 52%;
     padding-left: 1.5rem;
   }
 }

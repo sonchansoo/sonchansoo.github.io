@@ -2,16 +2,39 @@
 # 프로젝트 목록 - 여기서 글(이름, 설명) 수정
 # ============================================
 # name: 프로젝트 제목
-# repo: GitHub 리포지토리 이름만 (예: Tello_contents)
-# img: 사진 경로 (아래 "사진 첨부 위치" 참고)
-# video: (선택) 유튜브 embed URL 또는 mp4 경로
-# desc: 프로젝트 설명 (여러 줄 가능, 마크다운 지원)
+# img: 카드 썸네일용 사진 1장 (필수)
+# video: (선택) 카드용 영상 1개. 있으면 카드에 영상 표시
+#
+# [상세 화면용 - 여러 개 가능]
+# media: 상세 화면에 나올 사진/영상 목록 (순서대로)
+#   - image: /images/projects/파일.jpg
+#   - video: https://www.youtube.com/embed/비디오ID  또는  /videos/projects/demo.mp4
+#
+# sections: 상세 화면에 나올 설명 단락들 (제목 선택, 내용 마크다운)
+#   - title: 단락 제목 (선택)
+#     content: |
+#       내용...
+#   - content: |   (제목 없이 단락만)
+#       내용...
+#
+# (media/sections 없으면 기존처럼 img, video, desc 사용)
 # ============================================
 
 - name: Multi-Agent Reinforcement Learning Framework for Attack and Defense Intelligence in Drone Soccer
   gh_user: sonchansoo
   repo: 
   img: /images/projects/tello_contents.jpg
+  media:
+    - image: /images/projects/tello_contents.jpg
+    # - video: https://www.youtube.com/embed/비디오ID
+  sections:
+    - title: 개요
+      content: |
+        Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
+    - title: 주요 기능
+      content: |
+        - 드론 제어
+        - 컨트롤러 코드
   desc: |
     Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
 
@@ -19,15 +42,31 @@
   gh_user: sonchansoo
   repo: Tello_contents
   img: /images/projects/tello_contents.jpg
+  media:
+    - image: /images/projects/tello_contents.jpg
+  sections:
+    - content: |
+        Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
   desc: |
     Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
-  
-- name: 프로젝트 이름
+
+- name: One-Handed 6-DoF Drone Control Using Graph-Based Gesture Recognition
   gh_user: sonchansoo
   repo: my-repo-name
   img: /images/projects/sample.jpg
-  # 예시) 유튜브 영상 추가 (embed URL 사용)
-  # video: https://www.youtube.com/embed/비디오ID
+  # 상세 화면에 미디어 여러 개 예시:
+  # media:
+  #   - image: /images/projects/sample.jpg
+  #   - video: https://www.youtube.com/embed/비디오ID
+  #   - image: /images/projects/sample2.jpg
+  # 단락 여러 개 예시:
+  # sections:
+  #   - title: 배경
+  #     content: |
+  #       ...
+  #   - title: 방법
+  #     content: |
+  #       ...
   desc: |
     여기에 프로젝트 설명을 입력하세요.
     여러 줄도 가능합니다.

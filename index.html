@@ -70,39 +70,101 @@ robots: noindex
         <h2 class="project-detail__title">{{ project.name }}</h2>
       </header>
       <div class="project-detail__content">
-        <div class="project-detail__media">
-          {% if project.video %}
-            {% assign video_src = project.video %}
-            {% if video_src contains 'http' %}
-              {% assign full_video_src = video_src %}
-            {% else %}
-              {% assign full_video_src = video_src | prepend: site.baseurl %}
-            {% endif %}
-            <div class="project-detail__video-wrap">
-              {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
-                <div class="project-detail__video project-detail__video--iframe">
-                  <iframe src="{{ full_video_src }}"
-                          loading="lazy"
-                          title="{{ project.name }} 동영상"
-                          frameborder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowfullscreen></iframe>
-                </div>
+        <div class="project-detail__media-col">
+          {% if project.media and project.media.size > 0 %}
+            <div class="project-detail__media-list">
+              {% for item in project.media %}
+                {% if item.image %}
+                  {% assign media_src = item.image %}
+                  {% unless media_src contains 'http' %}
+                    {% assign media_src = item.image | prepend: site.baseurl %}
+                  {% endunless %}
+                  <div class="project-detail__media-item project-detail__media-item--image">
+                    <div class="project-detail__image-wrap">
+                      <img class="project-detail__image" src="{{ media_src }}" alt="{{ project.name }}">
+                    </div>
+                  </div>
+                {% elsif item.video %}
+                  {% assign video_src = item.video %}
+                  {% unless video_src contains 'http' %}
+                    {% assign video_src = item.video | prepend: site.baseurl %}
+                  {% endunless %}
+                  <div class="project-detail__media-item project-detail__media-item--video">
+                    <div class="project-detail__video-wrap">
+                      {% if video_src contains 'youtube.com' or video_src contains 'youtu.be' %}
+                        <div class="project-detail__video project-detail__video--iframe">
+                          <iframe src="{{ video_src }}"
+                                  loading="lazy"
+                                  title="{{ project.name }} 동영상"
+                                  frameborder="0"
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                  allowfullscreen></iframe>
+                        </div>
+                      {% else %}
+                        <video class="project-detail__video" controls src="{{ video_src }}"></video>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% else %}
+            {% if project.video %}
+              {% assign video_src = project.video %}
+              {% if video_src contains 'http' %}
+                {% assign full_video_src = video_src %}
               {% else %}
-                <video class="project-detail__video" controls src="{{ full_video_src }}"></video>
+                {% assign full_video_src = video_src | prepend: site.baseurl %}
               {% endif %}
-            </div>
-          {% elsif project.img %}
-            <div class="project-detail__image-wrap">
-              <img class="project-detail__image" src="{{ img_src }}" alt="{{ project.name }}">
-            </div>
+              <div class="project-detail__media-list">
+                <div class="project-detail__media-item project-detail__media-item--video">
+                  <div class="project-detail__video-wrap">
+                    {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
+                      <div class="project-detail__video project-detail__video--iframe">
+                        <iframe src="{{ full_video_src }}"
+                                loading="lazy"
+                                title="{{ project.name }} 동영상"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                      </div>
+                    {% else %}
+                      <video class="project-detail__video" controls src="{{ full_video_src }}"></video>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% elsif project.img %}
+              <div class="project-detail__media-list">
+                <div class="project-detail__media-item project-detail__media-item--image">
+                  <div class="project-detail__image-wrap">
+                    <img class="project-detail__image" src="{{ img_src }}" alt="{{ project.name }}">
+                  </div>
+                </div>
+              </div>
+            {% endif %}
           {% endif %}
         </div>
-        <div class="project-detail__text">
-          {% if project.desc %}
-            {{ project.desc | markdownify }}
+        <div class="project-detail__text-col">
+          {% if project.sections and project.sections.size > 0 %}
+            <div class="project-detail__sections">
+              {% for section in project.sections %}
+                <section class="project-detail__section">
+                  {% if section.title %}
+                    <h3 class="project-detail__section-title">{{ section.title }}</h3>
+                  {% endif %}
+                  <div class="project-detail__section-content">
+                    {{ section.content | markdownify }}
+                  </div>
+                </section>
+              {% endfor %}
+            </div>
+          {% elsif project.desc %}
+            <div class="project-detail__text">
+              {{ project.desc | markdownify }}
+            </div>
           {% else %}
-            <p>프로젝트 설명을 _data/projects.yml 에서 추가하세요.</p>
+            <p class="project-detail__text">프로젝트 설명을 _data/projects.yml 에서 추가하세요.</p>
           {% endif %}
         </div>
       </div>
