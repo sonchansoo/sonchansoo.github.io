@@ -103,7 +103,7 @@
   img:  # TODO: 대표 이미지(티저/아키텍처/데모 스샷) URL 또는 경로로 교체
   media:
     - image:  # TODO: 데모 GIF/이미지 URL 또는 경로로 교체
-    - video: https://youtu.be/njVfUxiAd8s
+    - video: https://youtu.be/uPFVPq7UdDc
   sections:
     - title: 개요
       content: |
