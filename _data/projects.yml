@@ -23,18 +23,18 @@
 - name: Multi-Agent Reinforcement Learning Framework for Attack and Defense Intelligence in Drone Soccer
   gh_user: sonchansoo
   repo: 
-  img: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer0.png
+  img: /images/projects/Dsoccer0.png
   media:
     - video: https://youtu.be/raPFnHFL2Dc
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer1.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer2.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer3.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer4.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer5.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer6.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer7.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer8.png
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer9.png
+    - image: /images/projects/Dsoccer1.png
+    - image: /images/projects/Dsoccer2.png
+    - image: /images/projects/Dsoccer3.png
+    - image: /images/projects/Dsoccer4.png
+    - image: /images/projects/Dsoccer5.png
+    - image: /images/projects/Dsoccer6.png
+    - image: /images/projects/Dsoccer7.png
+    - image: /images/projects/Dsoccer8.png
+    - image: /images/projects/Dsoccer9.png
   sections:
     - title: 개요
       content: |
@@ -44,7 +44,7 @@
         
         공격수는 상대 링(골)을 통과해 득점하는 전략을 학습하고, 수비수는 링 주변에서 방어 위치를 유지하며
         진입/통과를 저지(블로킹 포함)하는 전략을 학습합니다. 이 과정은 self-play 기반으로 지속적으로 상대가 강해지는
-        비정상(non-stationary) 환경에서 정책이 함께 진화하도록 설계했습니다. :contentReference[oaicite:0]{index=0}
+        비정상(non-stationary) 환경에서 정책이 함께 진화하도록 설계했습니다. 
 
     - title: 핵심 설계 및 성과
       content: |
@@ -59,15 +59,43 @@
 - name: Proximal Policy Optimization for Robotic Arm Docking Control in Space Environments
   gh_user: sonchansoo
   repo: Tello_contents
-  img: /images/projects/tello_contents.jpg
+  img: /images/projects/docking0.png
   media:
-    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/docking0.png
+    - image: /images/projects/docking0.png
     - video: https://youtu.be/BiAmmh4AXGI
   sections:
-    - content: |
-        Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
+    - title: 개요
+      content: |
+        우주(무중력) 환경을 가정한 시뮬레이션에서 로봇팔(VX300S)이 **위성 모듈(Target)** 을 잡아 원하는 위치에 정렬한 뒤
+        **도킹(docking)** 까지 수행하도록, 강화학습(PPO) 기반 제어 환경을 구성한 프로젝트입니다.
+        Isaac Lab/Isaac Sim 기반으로 물리 환경을 만들고, 도킹 작업을 단계별 과업(approach→grasp→transport→docking)으로 나눠 학습 안정성을 확보했습니다. 
+
+    - title: 환경/상태/행동 설계
+      content: |
+        - **행동(Action):** VX300S 로봇팔 6개 관절을 연속 제어
+        - **관측(Observation):** 관절 위치/속도 + EE(end-effector) 위치 + 타겟/도킹 포인트/패널 간 상대 벡터 + 거리 + 축 정렬(dot product) + 단계 one-hot 등으로 구성 
+        - **물리 설정:** 중력 비활성(disable_gravity), 감쇠(damping) 등 우주 환경 느낌을 주는 파라미터를 설정함
+
+    - title: 도킹 파이프라인(단계별 상태머신)
+      content: |
+        도킹 작업을 다음 상태로 관리합니다. 
+        - **APPROACH:** 그랩 목표점까지 접근
+        - **GRASPED:** 일정 스텝 동안 그랩 유지(hold)
+        - **TRANSPORT:** 타겟을 목표 패널 근처로 이동
+        - **DOCKING:**  도킹 완료
+        - **COMPLETED:** 성공 처리
+
+
+    - title: 보상/종료 조건
+      content: |
+        - **보상(Reward):** 단계별로 “가까워지기(거리 지수형) + 정렬(축 dot) + 그랩 성공/유지 보너스 + 도킹 큰 보상” 구조로 설계하고,
+          큰 행동을 억제하기 위해 action penalty를 추가했습니다. 
+        - **종료(Done):** 도킹 성공(COMPLETED), 범위 이탈(out-of-bounds), 접근 단계에서 타겟이 너무 멀어짐(escape),
+          그랩 후 거리 임계값을 넘는 grasp lost 등을 종료 조건으로 사용했습니다. 
+
   desc: |
-    Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
+    Isaac Lab 기반 무중력(우주) 환경에서 VX300S 로봇팔이 위성 모듈을 잡고 지정 패널에 정렬해 도킹까지 수행하도록
+    PPO 학습용 RL 환경을 구현했습니다. 안정적으로 approach→grasp→transport→dock를 학습하도록 설계했습니다. 
 
 - name: Graph-Based Gesture Recognition 기반 One-Handed 6-DoF 드론 조종 시스템
   gh_user: sonchansoo
@@ -75,7 +103,7 @@
   img:  # TODO: 대표 이미지(티저/아키텍처/데모 스샷) URL 또는 경로로 교체
   media:
     - image:  # TODO: 데모 GIF/이미지 URL 또는 경로로 교체
-    - video: https://youtu.be/Lv2XTrCht24
+    - video: https://youtu.be/njVfUxiAd8s
   sections:
     - title: 개요
       content: |
@@ -114,7 +142,7 @@
 - name: FoodHabitGame (냠냠쩝쩝팡팡) — AI 기반 어린이 식습관 개선 게임
   gh_user: sonchansoo
   repo:  # TODO: 실제 GitHub 저장소 URL (예: https://github.com/sonchansoo/FoodHabitGame)
-  img: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/food0.png
+  img: /images/projects/food0.png
   media:
     - image:  # TODO: 데모 GIF/스크린샷 URL (예: https://.../demo.gif)
     - video: https://youtu.be/SDVlVpFXJcQ
