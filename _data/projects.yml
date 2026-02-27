@@ -59,9 +59,9 @@
 - name: Proximal Policy Optimization for Robotic Arm Docking Control in Space Environments
   gh_user: sonchansoo
   repo: Tello_contents
-  img: /images/projects/docking0.png
+  img: /images/projects/Docking0.png
   media:
-    - image: /images/projects/docking0.png
+    - image: /images/projects/Docking0.png
     - video: https://youtu.be/BiAmmh4AXGI
   sections:
     - title: 개요
@@ -100,9 +100,9 @@
 - name: Graph-Based Gesture Recognition 기반 One-Handed 6-DoF 드론 조종 시스템
   gh_user: sonchansoo
   repo:  # TODO: 실제 GitHub 저장소 URL/경로로 교체
-  img:  # TODO: 대표 이미지(티저/아키텍처/데모 스샷) URL 또는 경로로 교체
+  img: /images/projects/OHD0.png
   media:
-    - image:  # TODO: 데모 GIF/이미지 URL 또는 경로로 교체
+    - image: /images/projects/OHD0.png
     - video: https://youtu.be/uPFVPq7UdDc
   sections:
     - title: 개요
