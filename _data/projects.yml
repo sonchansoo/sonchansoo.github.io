@@ -54,7 +54,9 @@
         - **학습 프레임워크:** self-play 기반 **MAPPO**로 공격/수비 정책을 동시 경쟁 학습(제로섬 리턴이 균형 근처로 수렴) 
         - **평가 프로토콜:** Elo rating으로 장기 성능 추적 + cross-play matrix로 세대 간 정책 우위/안정성/순환 지배 여부 점검 
         - **실험 결과:** 최신 공격 정책이 과거 수비 정책을 크게 상회(A@1020k vs D@700k winrate ≈ 0.80), 최신끼리도 공격 우세(A@1020k vs D@1020k winrate ≈ 0.66)이며 강한 cyclic dominance는 관찰되지 않음 
-
+  desc: |
+    NVIDIA Isaac Lab 기반의 경쟁형 드론-사커 MARL 프레임워크로, 물리적으로 사실적인 3D 공격수–수비수(제로섬) 환경에서 self-play MAPPO로 학습했습니다.
+    본 프로젝트의 기여는 (1) 역할별 관측을 갖춘 구조화된 드론-사커 시뮬레이션, (2) 학습 안정화를 위한 EMA-normalized shaping 보상 + 이벤트 보상 설계, (3) 정책의 세대별 향상과 강건성을 검증하기 위한 Elo rating 및 cross-play matrix 기반 평가 프로토콜입니다. 
 
 - name: Proximal Policy Optimization for Robotic Arm Docking Control in Space Environments
   gh_user: sonchansoo
