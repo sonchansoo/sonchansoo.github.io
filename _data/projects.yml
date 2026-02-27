@@ -23,9 +23,9 @@
 - name: Multi-Agent Reinforcement Learning Framework for Attack and Defense Intelligence in Drone Soccer
   gh_user: sonchansoo
   repo: 
-  img:  # TODO: 프로젝트 대표 썸네일(예: figure/teaser.png) 경로 또는 URL로 교체
+  img: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer0.png
   media:
-    - image:  # TODO: 데모 GIF/이미지 경로 또는 URL로 교체
+    - image: /Users/sonchansoo/Desktop/github.io/sonchansoo.github.io/images/projects/Dsoccer1.png
     - video: https://youtu.be/raPFnHFL2Dc
   sections:
     - title: 개요

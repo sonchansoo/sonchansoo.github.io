@@ -85,15 +85,25 @@ robots: noindex
                     </div>
                   </div>
                 {% elsif item.video %}
-                  {% assign video_src = item.video %}
-                  {% unless video_src contains 'http' %}
-                    {% assign video_src = item.video | prepend: site.baseurl %}
-                  {% endunless %}
+                  {% assign raw_video_src = item.video %}
+                  {% if raw_video_src contains 'http' %}
+                    {% assign video_src = raw_video_src %}
+                  {% else %}
+                    {% assign video_src = raw_video_src | prepend: site.baseurl %}
+                  {% endif %}
+                  {% assign embed_src = video_src %}
+                  {% if video_src contains 'youtu.be/' %}
+                    {% assign yt_id = video_src | split:'youtu.be/' | last | split:'?' | first %}
+                    {% assign embed_src = 'https://www.youtube.com/embed/' | append: yt_id %}
+                  {% elsif video_src contains 'watch?v=' %}
+                    {% assign yt_id = video_src | split:'watch?v=' | last | split:'&' | first %}
+                    {% assign embed_src = 'https://www.youtube.com/embed/' | append: yt_id %}
+                  {% endif %}
                   <div class="project-detail__media-item project-detail__media-item--video">
                     <div class="project-detail__video-wrap">
-                      {% if video_src contains 'youtube.com' or video_src contains 'youtu.be' %}
+                      {% if embed_src contains 'youtube.com' %}
                         <div class="project-detail__video project-detail__video--iframe">
-                          <iframe src="{{ video_src }}"
+                          <iframe src="{{ embed_src }}"
                                   loading="lazy"
                                   title="{{ project.name }} 동영상"
                                   frameborder="0"
@@ -101,7 +111,7 @@ robots: noindex
                                   allowfullscreen></iframe>
                         </div>
                       {% else %}
-                        <video class="project-detail__video" controls src="{{ video_src }}"></video>
+                        <video class="project-detail__video" controls src="{{ embed_src }}"></video>
                       {% endif %}
                     </div>
                   </div>
@@ -110,18 +120,26 @@ robots: noindex
             </div>
           {% else %}
             {% if project.video %}
-              {% assign video_src = project.video %}
-              {% if video_src contains 'http' %}
-                {% assign full_video_src = video_src %}
+              {% assign raw_video_src = project.video %}
+              {% if raw_video_src contains 'http' %}
+                {% assign video_src = raw_video_src %}
               {% else %}
-                {% assign full_video_src = video_src | prepend: site.baseurl %}
+                {% assign video_src = raw_video_src | prepend: site.baseurl %}
+              {% endif %}
+              {% assign embed_src = video_src %}
+              {% if video_src contains 'youtu.be/' %}
+                {% assign yt_id = video_src | split:'youtu.be/' | last | split:'?' | first %}
+                {% assign embed_src = 'https://www.youtube.com/embed/' | append: yt_id %}
+              {% elsif video_src contains 'watch?v=' %}
+                {% assign yt_id = video_src | split:'watch?v=' | last | split:'&' | first %}
+                {% assign embed_src = 'https://www.youtube.com/embed/' | append: yt_id %}
               {% endif %}
               <div class="project-detail__media-list">
                 <div class="project-detail__media-item project-detail__media-item--video">
                   <div class="project-detail__video-wrap">
-                    {% if full_video_src contains 'youtube.com' or full_video_src contains 'youtu.be' %}
+                    {% if embed_src contains 'youtube.com' %}
                       <div class="project-detail__video project-detail__video--iframe">
-                        <iframe src="{{ full_video_src }}"
+                        <iframe src="{{ embed_src }}"
                                 loading="lazy"
                                 title="{{ project.name }} 동영상"
                                 frameborder="0"
@@ -129,7 +147,7 @@ robots: noindex
                                 allowfullscreen></iframe>
                       </div>
                     {% else %}
-                      <video class="project-detail__video" controls src="{{ full_video_src }}"></video>
+                      <video class="project-detail__video" controls src="{{ embed_src }}"></video>
                     {% endif %}
                   </div>
                 </div>
