@@ -57,6 +57,7 @@
   img: /images/projects/tello_contents.jpg
   media:
     - image: /images/projects/tello_contents.jpg
+    - video: https://youtu.be/BiAmmh4AXGI
   sections:
     - content: |
         Tello 드론 콘텐츠 모음입니다. Tello 드론 제어 코드와 컨트롤러 코드를 포함합니다.
@@ -83,3 +84,15 @@
   desc: |
     여기에 프로젝트 설명을 입력하세요.
     여러 줄도 가능합니다.
+
+- name: Multi-Agent Reinforcement Learning Framework for Attack and Defense Intelligence in Drone Soccer
+  gh_user: sonchansoo
+  repo: 
+  img:  # TODO: 프로젝트 대표 썸네일(예: figure/teaser.png) 경로 또는 URL로 교체
+  media:
+    - image:  # TODO: 데모 GIF/이미지 경로 또는 URL로 교체
+    - video: https://youtu.be/raPFnHFL2Dc
+  sections:
+    - title: 개요
+      content: |
+        - title: 개요
