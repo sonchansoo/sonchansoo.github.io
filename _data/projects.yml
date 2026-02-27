@@ -38,7 +38,7 @@
   sections:
     - title: 개요
       content: |
-        NVIDIA Isaac Lab 기반의 물리적으로 사실적인 드론-사커(Drone Soccer) 시뮬레이션에서,
+        NVIDIA Isaac Lab 기반의 물리적으로 사실적인 Drone Soccer 시뮬레이션에서,
         공격수(Attacker)와 수비수(Defender) 두 UAV 에이전트가 **서로 상반된 목표(제로섬)** 로 경쟁하도록 구성한
         **경쟁형 Multi-Agent Reinforcement Learning(MARL) 프레임워크**를 구현했습니다.
         
