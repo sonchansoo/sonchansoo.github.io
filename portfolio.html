@@ -1,0 +1,77 @@
+---
+layout: default
+title: Portfolio
+permalink: /portfolio/
+---
+
+{% assign pdf_path = site.portfolio_pdf | default: '/images/portfolio/portfolio.pdf' %}
+{% assign pdf_url = pdf_path | prepend: site.baseurl %}
+
+<div class="portfolio-page">
+  <div class="portfolio-page__intro">
+    <h1 class="portfolio-page__title">Portfolio</h1>
+    <p class="portfolio-page__lead">
+      아래에서 포트폴리오 PDF를 바로 보거나, 새 탭에서 전체 화면으로 열 수 있습니다.
+      파일을 바꾸려면 <code>images/portfolio/portfolio.pdf</code>를 교체하고,
+      경로가 다르면 <code>_config.yml</code>의 <code>portfolio_pdf</code> 값을 수정하세요.
+    </p>
+    <div class="portfolio-pdf-actions">
+      <a class="portfolio-pdf-btn portfolio-pdf-btn--primary" href="{{ pdf_url }}" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-up-right-from-square"></i> 새 탭에서 열기
+      </a>
+      <a class="portfolio-pdf-btn" href="{{ pdf_url }}" download>
+        <i class="fa-solid fa-download"></i> 다운로드
+      </a>
+    </div>
+  </div>
+
+  <div class="portfolio-pdf-wrap">
+    <iframe
+      class="portfolio-pdf-frame"
+      title="Portfolio PDF"
+      src="{{ pdf_url }}#view=FitH"
+      loading="lazy"></iframe>
+    <p class="portfolio-pdf-fallback">
+      브라우저에서 PDF가 보이지 않으면
+      <a href="{{ pdf_url }}" target="_blank" rel="noopener noreferrer">여기를 눌러 새 탭에서 열기</a>를 사용하세요.
+    </p>
+  </div>
+
+  {% assign items = site.data.portfolio %}
+  {% if items and items.size > 0 %}
+    <h2 class="portfolio-page__subtitle">추가 자료</h2>
+    <div class="portfolio-grid">
+      {% for item in items %}
+        {% assign cover = item.cover %}
+        {% if cover %}
+          {% unless cover contains 'http' %}
+            {% assign cover = cover | prepend: site.baseurl %}
+          {% endunless %}
+        {% endif %}
+        <article class="portfolio-entry">
+          {% if cover %}
+            <div class="portfolio-entry__cover">
+              <img src="{{ cover }}" alt="{{ item.title | escape }}">
+            </div>
+          {% endif %}
+          <div class="portfolio-entry__body">
+            {% if item.date %}
+              <div class="portfolio-entry__meta">{{ item.date }}</div>
+            {% endif %}
+            <h3 class="portfolio-entry__title">{{ item.title }}</h3>
+            {% if item.summary %}
+              <div class="portfolio-entry__summary">
+                {{ item.summary | markdownify }}
+              </div>
+            {% endif %}
+            {% if item.link %}
+              <a class="portfolio-entry__link" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">
+                자료 보기 →
+              </a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
