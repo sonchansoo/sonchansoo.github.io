@@ -6,6 +6,8 @@ permalink: /portfolio.html
 
 {% assign pdf_path = site.portfolio_pdf | default: '/images/portfolio/portfolio1.pdf' %}
 {% assign pdf_url = pdf_path | prepend: site.baseurl %}
+{% assign _cache_bust = site.time | date: '%s' %}
+{% assign pdf_url_busted = pdf_url | append: '?v=' | append: _cache_bust %}
 
 <div class="portfolio-page">
   <div class="portfolio-page__intro">
@@ -13,10 +15,10 @@ permalink: /portfolio.html
     <p class="portfolio-page__lead">
     </p>
     <div class="portfolio-pdf-actions">
-      <a class="portfolio-pdf-btn portfolio-pdf-btn--primary" href="{{ pdf_url }}" target="_blank" rel="noopener noreferrer">
+      <a class="portfolio-pdf-btn portfolio-pdf-btn--primary" href="{{ pdf_url_busted }}" target="_blank" rel="noopener noreferrer">
         <i class="fa-solid fa-up-right-from-square"></i> 새 탭에서 열기
       </a>
-      <a class="portfolio-pdf-btn" href="{{ pdf_url }}" download>
+      <a class="portfolio-pdf-btn" href="{{ pdf_url_busted }}" download>
         <i class="fa-solid fa-download"></i> 다운로드
       </a>
     </div>
@@ -26,11 +28,11 @@ permalink: /portfolio.html
     <iframe
       class="portfolio-pdf-frame"
       title="Portfolio PDF"
-      src="{{ pdf_url }}#view=FitH"
+      src="{{ pdf_url_busted }}#view=FitH"
       loading="lazy"></iframe>
     <p class="portfolio-pdf-fallback">
       브라우저에서 PDF가 보이지 않으면
-      <a href="{{ pdf_url }}" target="_blank" rel="noopener noreferrer">여기를 눌러 새 탭에서 열기</a>를 사용하세요.
+      <a href="{{ pdf_url_busted }}" target="_blank" rel="noopener noreferrer">여기를 눌러 새 탭에서 열기</a>를 사용하세요.
     </p>
   </div>
 
