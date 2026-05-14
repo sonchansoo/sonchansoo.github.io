@@ -89,7 +89,7 @@
 
               <!-- CV -->
               <li class="navigation__item">
-                <a href="https://sonchansoo.github.io/cv/cv.pdf" title="Download CV" target="_blank">
+                <a href="{{ site.baseurl }}{{ site.cv_pdf | default: '/cv/cv.pdf' }}" title="Download CV" target="_blank" rel="noopener noreferrer">
                   <i class="fa-solid fa-file-pdf"></i>
                   <span class="label">CV</span>
                 </a>
@@ -105,7 +105,7 @@
 
               <!-- Portfolio -->
               <li class="navigation__item">
-                <a href="{{ site.baseurl }}/portfolio/" title="Portfolio">
+                <a href="{{ site.baseurl }}/portfolio.html" title="Portfolio">
                   <i class="fa-solid fa-briefcase"></i>
                   <span class="label">Portfolio</span>
                 </a>

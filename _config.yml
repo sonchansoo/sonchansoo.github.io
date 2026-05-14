@@ -3,8 +3,10 @@ title: Chansoo Son
 description: 'Software Engineer'
 url: 'https://sonchansoo.github.io'
 baseurl: ''
+# CV PDF (리포지토리 기준 경로) — 파일 바꾸면 여기만 수정
+cv_pdf: '/cv/cv1.pdf'
 # 메인 포트폴리오 PDF (리포지토리 기준 경로)
-portfolio_pdf: '/images/portfolio/portfolio.pdf'
+portfolio_pdf: '/images/portfolio/portfolio1.pdf'
 profilepic: '/images/sonchansoo.jpg'
 bkimage: '/images/bk2.png'
 google_analytics: UA-XXXXXX-X

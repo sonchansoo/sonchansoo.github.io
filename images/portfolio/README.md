@@ -2,14 +2,15 @@
 
 ## 메인 PDF
 
-- **`portfolio.pdf`** — 포트폴리오 페이지(`/portfolio/`)에서 보여주는 기본 파일입니다.
-- 파일을 교체할 때도 이름을 **`portfolio.pdf`** 로 두면 `_config.yml` 수정 없이 동작합니다.
-- 다른 파일명을 쓰려면 `_config.yml` 의 `portfolio_pdf` 값을 바꾸세요.
+- 기본 파일: **`portfolio1.pdf`** (경로는 `_config.yml` 의 `portfolio_pdf` 와 맞춤)
+- 파일을 바꾸면 `_config.yml` 에서 `portfolio_pdf` 경로를 수정하세요.
 
-```yaml
-portfolio_pdf: '/images/portfolio/내파일명.pdf'
-```
+## 페이지 주소
 
-## 추가 이미지(카드 썸네일)
+- **`/portfolio.html`** — 메뉴의 Portfolio 링크와 동일합니다.  
+  (`/portfolio/` 만 쓰면 404가 날 수 있어 `.html` 주소로 통일했습니다.)
 
-- `_data/portfolio.yml` 에서 `추가 자료` 카드를 쓸 때 `cover: /images/portfolio/파일.png` 형식으로 지정합니다.
+## CV PDF
+
+- CV는 **`_config.yml` 의 `cv_pdf`** 로 연결됩니다. (현재 `/cv/cv1.pdf` 등)
+- 파일 이름을 바꾸면 `cv_pdf` 값만 바꾸면 됩니다.
